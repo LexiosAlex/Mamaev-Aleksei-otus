@@ -1,2 +1,7 @@
 # Mamaev-Aleksei-otus
-Repository was created for https://otus.ru/lessons/node/ course
+
+Репозиторий был создан для курса https://otus.ru/lessons/node/
+
+# Описание
+
+Задания в хранятся папках согласно их порядковому номеру
