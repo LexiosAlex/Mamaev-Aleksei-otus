@@ -8,7 +8,6 @@ export const dirReader = (filePath, depth, itemDepth = 0) => {
     name: path.basename(filePath)
   };
 
-
   if (stats.isDirectory() && !(depth <= 0) && !(depth <= itemDepth)) {
     DirStorageCounter.increaseFoldersCounter();
     const newDepth = itemDepth + 1;

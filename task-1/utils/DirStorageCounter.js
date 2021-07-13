@@ -5,11 +5,11 @@ class DirStorageCounter {
   }
 
   increaseFoldersCounter() {
-    this.foldersCount++
+    this.foldersCount++;
   }
 
   increaseFilesCounter() {
-    this.filesCount++
+    this.filesCount++;
   }
 
   getCounters() {
