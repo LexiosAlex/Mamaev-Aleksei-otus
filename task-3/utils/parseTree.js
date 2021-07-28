@@ -1,5 +1,5 @@
 import { treeWalker } from "./treeWalker.js";
-import DirStorageCounter from "./DirStorageCounter.js";
+import { dirStorageInstance } from "./DirStorageCounter.js";
 
 export const parseTree = (treeData, depth) => {
   console.log(treeData.name);
@@ -18,5 +18,5 @@ export const parseTree = (treeData, depth) => {
         });
   }
 
-  console.log(DirStorageCounter.getCounters());
+  console.log(dirStorageInstance.getCounters());
 };
