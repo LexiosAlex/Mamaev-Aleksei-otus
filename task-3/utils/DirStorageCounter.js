@@ -1,19 +1,19 @@
 class DirStorageCounter {
   constructor() {
-    this.foldersCount = 0;
-    this.filesCount = 0;
+    this._foldersCount = 0;
+    this._filesCount = 0;
   }
 
   increaseFoldersCounter() {
-    this.foldersCount++;
+    this._foldersCount++;
   }
 
   increaseFilesCounter() {
-    this.filesCount++;
+    this._filesCount++;
   }
 
   getCounters() {
-    return `${this.foldersCount} directories, ${this.filesCount} files`;
+    return `${this._foldersCount} directories, ${this._filesCount} files`;
   }
 }
 
