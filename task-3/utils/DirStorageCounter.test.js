@@ -6,7 +6,6 @@ beforeEach(() => {
   dirStorageCounter = new DirStorageCounter();
 });
 
-
 test("Test if the DirStorageCounter contains all the fields on the class instance", () => {
   expect(dirStorageCounter).toMatchObject({
     _foldersCount: 0,
@@ -26,4 +25,14 @@ test("Test increaseFilesCounter method", () => {
 
 test("Test getCounters method", () => {
   expect(dirStorageCounter.getCounters()).toBe("0 directories, 0 files");
+});
+
+test("Test resetCounters method", () => {
+  dirStorageCounter.increaseFoldersCounter();
+  dirStorageCounter.increaseFilesCounter();
+  dirStorageCounter.resetCounters();
+  expect(dirStorageCounter).toMatchObject({
+    _foldersCount: 0,
+    _filesCount: 0
+  });
 });

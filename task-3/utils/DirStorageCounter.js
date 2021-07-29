@@ -15,6 +15,11 @@ class DirStorageCounter {
   getCounters() {
     return `${this._foldersCount} directories, ${this._filesCount} files`;
   }
+
+  resetCounters() {
+    this._foldersCount = 0;
+    this._filesCount = 0;
+  }
 }
 
 export const dirStorageInstance = new DirStorageCounter();
