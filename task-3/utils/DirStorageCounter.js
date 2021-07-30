@@ -22,5 +22,5 @@ class DirStorageCounter {
   }
 }
 
-export const dirStorageInstance = new DirStorageCounter();
-export default DirStorageCounter;
+exports.dirStorageInstance = new DirStorageCounter();
+exports.DirStorageCounter = DirStorageCounter;

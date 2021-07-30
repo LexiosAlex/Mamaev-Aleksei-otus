@@ -1,4 +1,4 @@
-import DirStorageCounter from "./DirStorageCounter.js";
+const { DirStorageCounter } = require("./DirStorageCounter.js");
 
 let dirStorageCounter;
 

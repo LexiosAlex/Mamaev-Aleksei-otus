@@ -1,16 +1,16 @@
-import fs from "fs";
-import path from "path";
-import { dirStorageInstance } from "./DirStorageCounter.js";
+const fs = require("fs");
+const path = require("path");
+const { dirStorageInstance } = require("./DirStorageCounter.js");
 
-export const dirReader = (filePath, depth, itemDepth = 0) => {
+const dirReader = (filePath, depth, itemDepth = 0) => {
   if (!filePath) {
-    throw new Error('No file path argument provided')
+    throw new Error("No file path argument provided");
   }
 
   const stats = fs.lstatSync(filePath);
-  const isDir = stats.isDirectory()
+  const isDir = stats.isDirectory();
   const data = {
-    name: path.basename(filePath),
+    name: path.basename(filePath)
   };
 
   if (isDir) {
@@ -30,3 +30,5 @@ export const dirReader = (filePath, depth, itemDepth = 0) => {
 
   return data;
 };
+
+exports.dirReader = dirReader;

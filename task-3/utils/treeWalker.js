@@ -3,7 +3,7 @@ const NEXT = "│";
 const SPACE = "   ";
 const CROSS = "├──";
 
-export const treeWalker = ({
+const treeWalker = ({
   treeNode,
   prefix = "",
   childLength = 1,
@@ -30,3 +30,5 @@ export const treeWalker = ({
     return null;
   });
 };
+
+exports.treeWalker = treeWalker;

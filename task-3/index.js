@@ -1,5 +1,5 @@
-import { dirReader } from "./utils/dirReader.js";
-import { parseTree } from "./utils/parseTree.js";
+const { dirReader } = require("./utils/dirReader.js");
+const { parseTree } = require("./utils/parseTree.js");
 const dirPath = process.argv[2];
 const depth = process.argv[3];
 

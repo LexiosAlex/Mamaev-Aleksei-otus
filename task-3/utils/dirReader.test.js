@@ -1,10 +1,10 @@
-import fs from "fs";
-import { dirReader } from "./dirReader.js";
-import { dirStorageInstance } from "./DirStorageCounter.js";
+const fs = require("fs");
+const { dirReader } = require("./dirReader.js");
+const { dirStorageInstance } = require("./DirStorageCounter.js");
 
 const mockFolderName = "mock";
 
-const createMockFolder = async () => {
+const createMockFolder = () => {
   fs.mkdirSync(mockFolderName);
   fs.writeFileSync(`./${mockFolderName}/test1.txt`, "1");
   fs.writeFileSync(`./${mockFolderName}/test2.txt`, "2");
