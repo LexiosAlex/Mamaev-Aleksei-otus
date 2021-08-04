@@ -1,28 +1,28 @@
-const fs = require("fs");
 const { dirReader } = require("./dirReader.js");
 const { dirStorageInstance } = require("./DirStorageCounter.js");
+const mockFs = require("mock-fs");
 
 const mockFolderName = "mock";
 
 const createMockFolder = () => {
-  fs.mkdirSync(mockFolderName);
-  fs.writeFileSync(`./${mockFolderName}/test1.txt`, "1");
-  fs.writeFileSync(`./${mockFolderName}/test2.txt`, "2");
-  fs.mkdirSync(`./${mockFolderName}/testDir`);
-  fs.writeFileSync(`./${mockFolderName}/testDir/test3.txt`, "3");
-};
-
-const removeMockFolder = () => {
-  fs.rmdirSync(mockFolderName, { recursive: true });
+  mockFs({
+    [mockFolderName]: {
+      test1: "1",
+      test2: "2",
+      testDir: {
+        test3: "3",
+      },
+    },
+  });
 };
 
 beforeEach(() => {
-  dirStorageInstance.resetCounters();
   createMockFolder();
+  dirStorageInstance.resetCounters();
 });
 
 afterEach(() => {
-  removeMockFolder();
+  mockFs.restore();
 });
 
 test("Test if it throws an error when there is no filePath provided", () => {
@@ -32,64 +32,64 @@ test("Test if it throws an error when there is no filePath provided", () => {
 test("Test if it work properly when no depth argument provided", () => {
   const data = dirReader(mockFolderName);
   expect(data).toMatchObject({
-    name: "mock",
+    name: mockFolderName,
     items: [
       {
-        name: "test1.txt"
+        name: "test1",
       },
       {
-        name: "test2.txt"
+        name: "test2",
       },
       {
         name: "testDir",
         items: [
           {
-            name: "test3.txt"
-          }
-        ]
-      }
-    ]
+            name: "test3",
+          },
+        ],
+      },
+    ],
   });
 });
 
 test("Test if depth work properly", () => {
   const data = dirReader(mockFolderName, 1);
   expect(data).toMatchObject({
+    name: mockFolderName,
     items: [
       {
-        name: "test1.txt"
+        name: "test1",
       },
       {
-        name: "test2.txt"
+        name: "test2",
       },
       {
-        name: "testDir"
-      }
+        name: "testDir",
+      },
     ],
-    name: "mock"
   });
 });
 
 test("Test if it reads data from path and returns data correctly", () => {
   const data = dirReader(mockFolderName, 2);
   expect(data).toMatchObject({
+    name: mockFolderName,
     items: [
       {
-        name: "test1.txt"
+        name: "test1",
       },
       {
-        name: "test2.txt"
+        name: "test2",
       },
       {
         items: [
           {
-            name: "test3.txt"
-          }
+            name: "test3",
+          },
         ],
-        name: "testDir"
-      }
+        name: "testDir",
+      },
     ],
-    name: "mock"
   });
 });
 
